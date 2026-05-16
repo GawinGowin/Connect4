@@ -5,8 +5,6 @@ SRCS :=
 SRCS += src/main.c
 SRCS += 
 
-HEADER := $(shell find lib src include -name '*.h')
-
 CC := cc
 INCLUDES := -Iinclude
 CFLAGS := -Wall -Wextra -Werror -MMD -MP $(INCLUDES)
@@ -62,10 +60,8 @@ re: fclean all
 
 FORCE:
 
-.PHONY: test
-test: $(NAME) ${DNAME}
-	cd tests && uv run pytest -v
+HEADER := $(shell find lib src include -name '*.h')
 
 .PHONY: fmt
 fmt:
-	clang-format -i --style=file $(SRCS) $(HEADER) $(TESTS)
+	clang-format -i --style=file $(SRCS) $(HEADER)

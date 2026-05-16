@@ -7,6 +7,8 @@ connect4_debug
 *.pdf
 /docs
 
+CLAUDE.local.md
+
 # Prerequisites
 *.d
 
