@@ -44,6 +44,8 @@ int board_drop(t_board *b, int col, t_cell mark);
 int board_undo(t_board *b, int col);
 int board_is_full(t_board *b);
 
+int board_check_win(t_board *board, int last_row, int last_col);
+
 void draw_board(t_board *b);
 
 #endif /* CONNECT4_H */
