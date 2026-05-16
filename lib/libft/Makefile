@@ -44,6 +44,7 @@ SRCS += ft_strtol.c
 SRCS += ft_strcmp.c
 SRCS += get_next_line.c
 SRCS += ft_printf.c
+SRCS += ft_dprintf.c
 SRCS += ft_printf_funcs.c
 SRCS += ft_printf_c_char.c
 SRCS += ft_printf_d_dec.c

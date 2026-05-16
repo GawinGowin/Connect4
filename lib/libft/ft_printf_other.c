@@ -12,25 +12,25 @@
 
 #include "ft_printf_int.h"
 
-int	_print_percent(va_list args)
+int	_print_percent(int fd, va_list args)
 {
 	if (args == NULL)
 		return (0);
-	if (write(STDOUT_FILENO, "%", 1) == -1)
+	if (write(fd, "%", 1) == -1)
 		return (0);
 	return (1);
 }
 
-int	_other_format(va_list args, char c)
+int	_other_format(int fd, va_list args, char c)
 {
 	int	digits;
 
 	digits = 0;
 	if (args == NULL)
 		return (0);
-	if (write(STDOUT_FILENO, "%", 1) != -1)
+	if (write(fd, "%", 1) != -1)
 		digits ++;
-	if (write(STDOUT_FILENO, &c, 1) != -1)
+	if (write(fd, &c, 1) != -1)
 		digits ++;
 	return (digits);
 }
