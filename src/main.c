@@ -4,7 +4,8 @@
 int main(int argc, char **argv) {
   t_args args = {};
   t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
-  t_cell next_palyer = CELL_P1;
+
+  t_cell next_palyer = CELL_P1; // TODO: select randomly
 
   t_parse_err err = parse_args(argc, argv, &args);
   if (err) {
