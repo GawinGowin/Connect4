@@ -41,6 +41,7 @@ SRCS += ft_substr.c
 SRCS += ft_tolower.c
 SRCS += ft_toupper.c
 SRCS += ft_strtol.c
+SRCS += ft_strcmp.c
 SRCS += get_next_line.c
 SRCS += ft_printf.c
 SRCS += ft_printf_funcs.c
@@ -52,6 +53,7 @@ SRCS += ft_printf_p_pt.c
 SRCS += ft_printf_s_str.c
 SRCS += ft_printf_u_u_dec.c
 SRCS += ft_printf_x_hex.c
+SRCS += 
 
 OBJS := $(SRCS:.c=.o)
 DOBJS := $(SRCS:.c=_d.o)
