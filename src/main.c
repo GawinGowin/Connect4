@@ -2,5 +2,17 @@
 #include "libft.h"
 
 int main() {
+  t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
+
+  draw_board(&board);
+  ft_printf("\n");
+  board_drop(&board, 3, CELL_P1);
+  board_drop(&board, 4, CELL_P2);
+  board_drop(&board, 3, CELL_P1);
+  draw_board(&board);
+  ft_printf("\n");
+  board_undo(&board, 3);
+  draw_board(&board);
+  ft_printf("\n");
   return (0);
 }
