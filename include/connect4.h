@@ -4,6 +4,8 @@
 #define MAX_ROWS 128
 #define MAX_COLS 128
 
+// CELL_P1: Human
+// CELL_P2: AI
 typedef enum e_cell { CELL_EMPTY = 0, CELL_P1 = 1, CELL_P2 = 2 } t_cell;
 
 typedef struct s_board {
@@ -14,11 +16,6 @@ typedef struct s_board {
   int moves_count;
 } t_board;
 
-typedef struct s_player {
-  t_cell mark;
-  int is_ai;
-} t_player;
-
 typedef struct s_io {
   void (*draw_board)(t_board *);
   int (*get_input)(t_board *);
@@ -26,9 +23,8 @@ typedef struct s_io {
 } t_io;
 
 typedef struct s_args {
-  long rows;
-  long cols;
-  int opt_gui;
+  int rows;
+  int cols;
 } t_args;
 
 typedef enum e_parse_err {
@@ -37,9 +33,13 @@ typedef enum e_parse_err {
   PARSE_NOT_DIGIT,
   PARSE_NEGATIVE,
   PARSE_TOO_SMALL,
-  PARSE_UNKNOWN_OPT
+  PARSE_TOO_BIG,
 } t_parse_err;
 
+t_parse_err parse_args(int argc, char **argv, t_args *ret);
+void print_usage(char *program, t_parse_err err);
+
+void board_init(t_board *b, t_args *args);
 int board_drop(t_board *b, int col, t_cell mark);
 int board_undo(t_board *b, int col);
 int board_is_full(t_board *b);

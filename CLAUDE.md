@@ -61,11 +61,6 @@ typedef struct s_board {
     int    moves_count;
 } t_board;
 
-typedef struct s_player {
-    t_cell mark;   // CELL_P1 or CELL_P2
-    int    is_ai;  // 0 = human, 1 = AI
-} t_player;
-
 // I/O vtable — game_loop only knows this; backend is selected in main
 typedef struct s_io {
     void (*draw_board)(t_board *board);
