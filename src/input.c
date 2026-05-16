@@ -25,7 +25,7 @@ int input_terminal(t_board *b) {
     return (-2);
   }
   if (b->stack_top[col] >= b->rows) {
-    ft_printf("Column %d is full. Choose another.\n", col + 1);
+    ft_printf("Column %d is full. Choose another.\n", col);
     return (-2);
   }
   return (col);
