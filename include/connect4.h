@@ -7,10 +7,10 @@
 typedef enum e_cell { CELL_EMPTY = 0, CELL_P1 = 1, CELL_P2 = 2 } t_cell;
 
 typedef struct s_board {
-  t_cell **grid;
+  t_cell grid[MAX_ROWS][MAX_COLS];
   int rows;
   int cols;
-  int *heights;
+  int stack_top[MAX_COLS];
   int moves_count;
 } t_board;
 
@@ -39,5 +39,11 @@ typedef enum e_parse_err {
   PARSE_TOO_SMALL,
   PARSE_UNKNOWN_OPT
 } t_parse_err;
+
+int board_drop(t_board *b, int col, t_cell mark);
+int board_undo(t_board *b, int col);
+int board_is_full(t_board *b);
+
+void draw_board(t_board *b);
 
 #endif /* CONNECT4_H */

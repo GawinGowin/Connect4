@@ -33,7 +33,7 @@ The binary is invoked as: `./connect4 <rows> <cols>` (minimum 6 rows, 7 cols).
 src/
 ├── main.c               # arg parse → select t_io backend → srand → game_loop
 ├── args.c               # validate argc/argv, row/col minimums, non-digit rejection
-├── board.c              # board_create / board_destroy / board_drop / board_is_full
+├── board.c              # board_drop / board_undo / board_is_full
 ├── display.c            # board_print terminal backend (ft_printf; row=0 is bottom)
 ├── display_ncurses.c    # board_print_ncurses bonus backend (mvprintw)
 ├── win_check.c          # board_check_win(board, last_row, last_col) — 4-dir check
@@ -54,11 +54,11 @@ src/
 typedef enum e_cell  { CELL_EMPTY = 0, CELL_P1 = 1, CELL_P2 = 2 }  t_cell;
 
 typedef struct s_board {
-    t_cell **grid;      // grid[row][col], row=0 is the bottom row
-    int      rows;
-    int      cols;
-    int     *heights;   // heights[col] = next empty row index in that column
-    int      moves_count;
+    t_cell grid[MAX_ROWS][MAX_COLS];   // grid[row][col], row=0 is the bottom row
+    int    rows;
+    int    cols;
+    int    stack_top[MAX_COLS];          // stack_top[col] = next empty row index in that column
+    int    moves_count;
 } t_board;
 
 typedef struct s_player {
@@ -78,7 +78,7 @@ extern t_io g_terminal_io;   // ft_printf / get_next_line
 extern t_io g_ncurses_io;    // mvprintw / wgetch  (bonus)
 ```
 
-**Critical layout rule**: `row=0` is the bottom (gravity side). `heights[col]` is the row where the next piece lands. Display iterates `rows-1` down to `0`. Win-check uses only the last-dropped (row, col) as the origin — no full-board scan.
+**Critical layout rule**: `row=0` is the bottom (gravity side). `stack_top[col]` is the row where the next piece lands. Display iterates `rows-1` down to `0`. Win-check uses only the last-dropped (row, col) as the origin — no full-board scan.
 
 ### Subject constraints
 - Language: C, compiler: `cc -Wall -Wextra -Werror`
