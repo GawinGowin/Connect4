@@ -3,6 +3,9 @@
 static int count_dir(t_board *b, int r, int c, t_cell mark, int dr, int dc);
 
 int board_check_win(t_board *board, int last_row, int last_col) {
+  if (last_col < 0 || last_col >= board->cols || board->stack_top[last_col] >= board->rows) {
+    return (-1);
+  }
   t_cell mark = board->grid[last_row][last_col];
 
   if (1 + count_dir(board, last_row, last_col, mark, 0, 1) +
