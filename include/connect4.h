@@ -4,6 +4,8 @@
 #define MAX_ROWS 128
 #define MAX_COLS 128
 
+// CELL_P1: Human
+// CELL_P2: AI
 typedef enum e_cell { CELL_EMPTY = 0, CELL_P1 = 1, CELL_P2 = 2 } t_cell;
 
 typedef struct s_board {
@@ -13,11 +15,6 @@ typedef struct s_board {
   int stack_top[MAX_COLS];
   int moves_count;
 } t_board;
-
-typedef struct s_player {
-  t_cell mark;
-  int is_ai;
-} t_player;
 
 typedef struct s_io {
   void (*draw_board)(t_board *);
