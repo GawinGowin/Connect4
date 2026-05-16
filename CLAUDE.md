@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Goal
+
+Implement a terminal Connect Four game in C where a human plays against an AI.
+The AI must play on every turn without hanging, and must try to win.
+
 ## Commands
 
 ```bash
@@ -85,14 +90,35 @@ void build_move_order(int *order, int cols) {
 }
 ```
 
+### Bonus (only evaluated if mandatory is perfect)
+- Add an optional argument to launch a graphical interface (SDL or ncurses).
+- Terminal display remains mandatory; the graphical interface only replaces column input.
+- Suggested flag: `./connect4 <rows> <cols> --gui` (exact form TBD).
+
 ### Submission checklist
 - `./connect4` with no args, non-digits, negative numbers, below-minimum dimensions → error + exit
 - EOF (Ctrl-D) during input → no infinite loop
 - Full column input → prompt again
 - Draw (all cells filled) → correct end message
+- Grid display skipped (or truncated) when too large for a standard terminal
 - `valgrind` or `-fsanitize=address` shows zero leaks
 - `make re`, `make fclean`, `make clean` all work
 - `-Wall -Wextra -Werror` zero warnings
 
 ## Code style
 `.clang-format` is configured (100-column limit, `AlwaysBreak` after open bracket). Run `make fmt` before committing.
+
+### Include rules
+- Each `.c` file includes only the headers it directly uses ("include what you use").
+- Add a standard header to `connect4.h` **only** when a type or prototype defined
+  there requires it (e.g., `<time.h>` if a prototype returns `time_t`).
+- `connect4.h` and `libft.h` are the project-wide headers every `.c` includes;
+  standard library headers are pulled in per-file.
+
+Typical mapping:
+| File | Standard headers |
+|---|---|
+| `main.c` | `<stdlib.h>` `<time.h>` |
+| `display.c` | `<stdio.h>` |
+| `args.c` | `<stdio.h>` `<stdlib.h>` |
+| `input.c` | `<stdio.h>` `<stdlib.h>` |
