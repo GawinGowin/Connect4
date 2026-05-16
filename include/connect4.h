@@ -50,4 +50,7 @@ int input_terminal(t_board *b);
 
 void draw_board(t_board *b);
 
+int ai_choose_move(t_board *board, t_cell player_mark);
+int ai_greedy(t_board *b, t_cell player_mark);
+
 #endif /* CONNECT4_H */
