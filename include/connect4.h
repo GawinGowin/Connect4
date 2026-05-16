@@ -10,7 +10,7 @@ typedef struct s_board {
   t_cell **grid;
   int rows;
   int cols;
-  int *heights;
+  int *stack_top;
   int moves_count;
 } t_board;
 
