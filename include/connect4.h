@@ -46,6 +46,8 @@ int board_is_full(t_board *b);
 
 int board_check_win(t_board *board, int last_row, int last_col);
 
+int input_terminal(t_board *b);
+
 void draw_board(t_board *b);
 
 #endif /* CONNECT4_H */
