@@ -74,6 +74,7 @@ void ft_putnbr_fd(int n, int fd);
 
 /* Extra (no norminette) */
 long ft_strtol(const char *nptr, char **endptr, int base);
+int	ft_strcmp(const char *s1, const char *s2);
 
 char *get_next_line(int fd);
 int ft_printf(const char *fmt, ...);
