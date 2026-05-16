@@ -20,11 +20,9 @@
 
 typedef int (*t_func_pt)(int fd, void *, ...);
 
-// core va_list implementation shared by ft_printf and ft_dprintf
 int ft_vdprintf(int fd, const char *fmt, va_list args);
 
 // sub functions
-/* Map a format specifier character to its corresponding print function. */
 t_func_pt switch_fmt_render(char specifier);
 /* write uintptr_t number as n base number */
 int dec_to_nbase(uintptr_t n, char *base, int fd);
