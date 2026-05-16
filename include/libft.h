@@ -78,5 +78,6 @@ int	ft_strcmp(const char *s1, const char *s2);
 
 char *get_next_line(int fd);
 int ft_printf(const char *fmt, ...);
+int	ft_dprintf(int fd, const char *fmt, ...);
 
 #endif /* LIBFT_H */

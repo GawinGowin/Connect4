@@ -12,7 +12,7 @@
 
 #include "ft_printf_int.h"
 
-int	x_print_dec_upper(va_list args)
+int	x_print_dec_upper(int fd, va_list args)
 {
 	int				digits;
 	unsigned int	value;
@@ -20,11 +20,11 @@ int	x_print_dec_upper(va_list args)
 
 	value = va_arg(args, unsigned int);
 	ulong_value = (uintptr_t) value;
-	digits = dec_to_nbase(ulong_value, "0123456789ABCDEF", STDOUT_FILENO);
+	digits = dec_to_nbase(ulong_value, "0123456789ABCDEF", fd);
 	return (digits);
 }
 
-int	x_print_dec_lower(va_list args)
+int	x_print_dec_lower(int fd, va_list args)
 {
 	int				digits;
 	unsigned int	value;
@@ -32,7 +32,7 @@ int	x_print_dec_lower(va_list args)
 
 	value = va_arg(args, unsigned int);
 	ulong_value = (uintptr_t) value;
-	digits = dec_to_nbase(ulong_value, "0123456789abcdef", STDOUT_FILENO);
+	digits = dec_to_nbase(ulong_value, "0123456789abcdef", fd);
 	return (digits);
 }
 

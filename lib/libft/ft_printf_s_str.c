@@ -12,7 +12,7 @@
 
 #include "ft_printf_int.h"
 
-int	s_print_str(va_list args)
+int	s_print_str(int fd, va_list args)
 {
 	char	*value;
 	int		digits;
@@ -23,7 +23,7 @@ int	s_print_str(va_list args)
 		value = "(null)";
 	while (*value != '\0')
 	{
-		if (write(STDOUT_FILENO, value, 1) != -1)
+		if (write(fd, value, 1) != -1)
 			digits ++;
 		value ++;
 	}

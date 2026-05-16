@@ -12,12 +12,12 @@
 
 #include "ft_printf_int.h"
 
-int	c_print_char(va_list args)
+int	c_print_char(int fd, va_list args)
 {
 	char	value;
 
 	value = (char) va_arg(args, int);
-	if (write(STDOUT_FILENO, &value, 1) == -1)
+	if (write(fd, &value, 1) == -1)
 		return (0);
 	return (1);
 }

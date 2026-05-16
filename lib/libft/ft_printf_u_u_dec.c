@@ -12,7 +12,7 @@
 
 #include "ft_printf_int.h"
 
-int	u_print_dec(va_list args)
+int	u_print_dec(int fd, va_list args)
 {
 	int				digits;
 	unsigned int	value;
@@ -20,7 +20,7 @@ int	u_print_dec(va_list args)
 
 	value = va_arg(args, unsigned int);
 	ulong_value = (uintptr_t) value;
-	digits = dec_to_nbase(ulong_value, "0123456789", STDOUT_FILENO);
+	digits = dec_to_nbase(ulong_value, "0123456789", fd);
 	return (digits);
 }
 

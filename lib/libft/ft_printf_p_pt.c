@@ -12,7 +12,7 @@
 
 #include "ft_printf_int.h"
 
-int	p_print_pt(va_list args)
+int	p_print_pt(int fd, va_list args)
 {
 	uintptr_t	value;
 	char		*prefix;
@@ -23,15 +23,15 @@ int	p_print_pt(va_list args)
 	digits = 0;
 	while (*prefix != '\0')
 	{
-		if (write(STDOUT_FILENO, prefix, 1) != -1)
+		if (write(fd, prefix, 1) != -1)
 			digits ++;
 		prefix ++;
 	}
-	digits += dec_to_nbase(value, "0123456789abcdef", STDOUT_FILENO);
+	digits += dec_to_nbase(value, "0123456789abcdef", fd);
 	return (digits);
 }
 
-int	p_print_pt_linux(va_list args)
+int	p_print_pt_linux(int fd, va_list args)
 {
 	uintptr_t	value;
 	char		*prefix;
@@ -44,13 +44,13 @@ int	p_print_pt_linux(va_list args)
 	digits = 0;
 	while (*prefix != '\0')
 	{
-		if (write(STDOUT_FILENO, prefix, 1) != -1)
+		if (write(fd, prefix, 1) != -1)
 			digits ++;
 		prefix ++;
 	}
 	if (value == 0)
 		return (digits);
-	digits += dec_to_nbase(value, "0123456789abcdef", STDOUT_FILENO);
+	digits += dec_to_nbase(value, "0123456789abcdef", fd);
 	return (digits);
 }
 
