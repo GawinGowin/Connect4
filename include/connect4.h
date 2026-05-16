@@ -16,12 +16,6 @@ typedef struct s_board {
   int moves_count;
 } t_board;
 
-typedef struct s_io {
-  void (*draw_board)(t_board *);
-  int (*get_input)(t_board *);
-  void (*show_result)(const char *);
-} t_io;
-
 typedef struct s_args {
   int rows;
   int cols;
