@@ -3,7 +3,7 @@
 static int count_dir(t_board *b, int r, int c, t_cell mark, int dr, int dc);
 
 int board_check_win(t_board *b, int last_row, int last_col) {
-  if (last_col < 0 || last_col >= b->cols || b->stack_top[last_col] >= b->rows) {
+  if (last_row < 0 || last_row >= b->rows || last_col < 0 || last_col >= b->cols) {
     return (-1);
   }
 
@@ -27,7 +27,6 @@ int board_check_win(t_board *b, int last_row, int last_col) {
     return 1;
   return 0;
 }
-
 
 static int count_dir(t_board *b, int r, int c, t_cell mark, int dr, int dc) {
   int n = 0;
