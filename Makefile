@@ -3,14 +3,27 @@ DNAME := $(NAME)_debug
 
 SRCS :=
 SRCS += src/main.c
+SRCS += src/args.c
+SRCS += src/board.c
+SRCS += src/display.c
+SRCS += src/display_ncurses.c
+SRCS += src/win_check.c
+SRCS += src/input.c
+SRCS += src/input_ncurses.c
+SRCS += src/io.c
+SRCS += src/game_loop.c
+SRCS += src/ai/ai.c
+SRCS += src/ai/ai_heuristic.c
+SRCS += src/ai/ai_negamax.c
+SRCS += src/ai/ai_evaluate.c
 SRCS += 
 
 CC := cc
 INCLUDES := -Iinclude
 CFLAGS := -Wall -Wextra -Werror -MMD -MP $(INCLUDES)
-LFLAGS := -Llib/libft -lft
+LFLAGS := -Llib/libft -lft -lncurses
 DFLAGS := -g3 -fsanitize=address
-DLFLAGS := -Llib/libft -lft_debug
+DLFLAGS := -Llib/libft -lft_debug -lncurses
 
 LIB := lib/libft/libft.a
 DLIB := lib/libft/libft_debug.a
