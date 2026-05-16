@@ -14,6 +14,7 @@ int main(int argc, char **argv) {
 
   srand(time(NULL));
   t_cell next_player = rand() % 2 ? CELL_P1 : CELL_P2;
+  ft_printf("First player: Player %d\n", next_player);
 
   t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
   board_init(&board, &args);
