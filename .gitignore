@@ -1,4 +1,11 @@
+.vscode/settings.json
+.vscode/launch.json
+
+connect4
+connect4_debug
+
 *.pdf
+/docs
 
 # Prerequisites
 *.d

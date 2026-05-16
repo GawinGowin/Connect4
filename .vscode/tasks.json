@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "connect4_make",
+      "command": "make",
+      "args": [
+        "debug"
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+  ],
+  "version": "2.0.0"
+}
