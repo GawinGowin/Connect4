@@ -6,16 +6,10 @@ SRCS += src/main.c
 SRCS += src/args.c
 SRCS += src/board.c
 SRCS += src/display.c
-SRCS += src/display_ncurses.c
 SRCS += src/win_check.c
 SRCS += src/input.c
-SRCS += src/input_ncurses.c
-SRCS += src/io.c
-SRCS += src/game_loop.c
 SRCS += src/ai/ai.c
 SRCS += src/ai/ai_greedy.c
-SRCS += src/ai/ai_negamax.c
-SRCS += src/ai/ai_evaluate.c
 SRCS += 
 
 CC := cc
