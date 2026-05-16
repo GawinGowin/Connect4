@@ -25,7 +25,7 @@ The binary is invoked as: `./connect4 <rows> <cols>` (minimum 6 rows, 7 cols).
 ### Current state
 - `include/connect4.h` — empty; all types and prototypes go here
 - `src/main.c` — stub returning 0
-- `lib/libft/` — fully implemented (atoi, split, putstr_fd, calloc, etc.); linked as `libft.a` / `libft_debug.a`
+- `lib/libft/` — fully implemented (atoi, split, putstr_fd, calloc, strtol, ft_printf, get_next_line, etc.); linked as `libft.a` / `libft_debug.a`
 - `Makefile SRCS` — only contains `src/main.c`; add new `.c` files here
 
 ### Target file structure

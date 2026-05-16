@@ -40,6 +40,18 @@ SRCS += ft_strtrim.c
 SRCS += ft_substr.c
 SRCS += ft_tolower.c
 SRCS += ft_toupper.c
+SRCS += ft_strtol.c
+SRCS += get_next_line.c
+SRCS += ft_printf.c
+SRCS += ft_printf_funcs.c
+SRCS += ft_printf_c_char.c
+SRCS += ft_printf_d_dec.c
+SRCS += ft_printf_i_int.c
+SRCS += ft_printf_other.c
+SRCS += ft_printf_p_pt.c
+SRCS += ft_printf_s_str.c
+SRCS += ft_printf_u_u_dec.c
+SRCS += ft_printf_x_hex.c
 
 OBJS := $(SRCS:.c=.o)
 DOBJS := $(SRCS:.c=_d.o)

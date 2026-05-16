@@ -19,6 +19,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#ifdef BUFFER_SIZE
+#else
+#define BUFFER_SIZE 10
+#endif
+
 /* Part 1 - Libc functions */
 /* <ctype.h> Check Value */
 int ft_isalpha(int c);
@@ -66,5 +71,11 @@ void ft_putchar_fd(char c, int fd);
 void ft_putstr_fd(char *s, int fd);
 void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
+
+/* Extra (no norminette) */
+long ft_strtol(const char *nptr, char **endptr, int base);
+
+char *get_next_line(int fd);
+int ft_printf(const char *fmt, ...);
 
 #endif /* LIBFT_H */
