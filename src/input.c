@@ -15,17 +15,17 @@ int input_terminal(t_board *b) {
     endptr++;
   if (endptr != NULL && ft_strcmp(endptr, "\n") != 0) {
     if (line[0] != '\n')
-      ft_printf("Please enter a number.\n");
+      ft_dprintf(STDERR_FILENO, "Please enter a number.\n");
     free(line);
     return (-2);
   }
   free(line);
   if (col < 0 || col >= b->cols) {
-    ft_printf("Enter a column between 0 and %d.\n", b->cols - 1);
+    ft_dprintf(STDERR_FILENO, "Enter a column between 0 and %d.\n", b->cols - 1);
     return (-2);
   }
   if (b->stack_top[col] >= b->rows) {
-    ft_printf("Column %d is full. Choose another.\n", col);
+    ft_dprintf(STDERR_FILENO, "Column %d is full. Choose another.\n", col);
     return (-2);
   }
   return (col);
