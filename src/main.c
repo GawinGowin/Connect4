@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
       ft_printf("Your move (column 0-%d): ", board.cols - 1);
       col = input_terminal(&board);
       if (col == -1) {
-        ft_printf("\nGame Exited\n");
+        ft_dprintf(STDERR_FILENO, "\nGame Exited\n");
         return 0;
       } else if (col == -2) {
         continue;
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
     if (next_player == CELL_P2) {
       col = ai_choose_move(&board, CELL_P2);
       if (col < 0) {
-        ft_printf("something wrong\n");
+        ft_dprintf(STDERR_FILENO, "something wrong\n");
         return 1;
       }
       ft_printf("AI plays column: %d\n", col);

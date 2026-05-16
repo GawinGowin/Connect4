@@ -48,9 +48,9 @@ static t_parse_err parse_posint(const char *s, int *value, int min, int max) {
 void print_usage(char *program, t_parse_err err) {
   const char *msg = parse_err_to_str(err);
   if (msg)
-    ft_printf("%s: %s\n", program, msg);
-  ft_printf("Usage: %s <rows> <cols>\n", program);
-  ft_printf("  6 <= rows <= %d, 7 <= cols <= %d\n", MAX_ROWS, MAX_COLS);
+    ft_dprintf(STDERR_FILENO, "%s: %s\n", program, msg);
+  ft_dprintf(STDERR_FILENO, "Usage: %s <rows> <cols>\n", program);
+  ft_dprintf(STDERR_FILENO, "  6 <= rows <= %d, 7 <= cols <= %d\n", MAX_ROWS, MAX_COLS);
 }
 
 static const char *parse_err_to_str(t_parse_err err) {
