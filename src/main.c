@@ -1,9 +1,17 @@
 #include "connect4.h"
 #include "libft.h"
 
-int main() {
+int main(int argc, char **argv) {
+  t_args args = {};
   t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
   t_cell next_palyer = CELL_P1;
+
+  t_parse_err err = parse_args(argc, argv, &args);
+  if (err) {
+    print_usage(argv[0], err);
+    return 1;
+  }
+  board_init(&board, &args);
 
   while (1) {
     draw_board(&board);
