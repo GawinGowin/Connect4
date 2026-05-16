@@ -43,7 +43,7 @@ src/
 ├── game_loop.c          # turn loop: io->draw_board → move → check_win/draw
 └── ai/
     ├── ai.c             # public: ai_choose_move(board, player_mark)
-    ├── ai_heuristic.c   # Phase 1: instant-win → block → safe → center
+    ├── ai_greedy.c      # Phase 1: instant-win → block → safe → center
     ├── ai_negamax.c     # Phase 2: negamax + alpha-beta + iterative deepening
     └── ai_evaluate.c   # leaf evaluation: center weight + threat count + parity
 ```
