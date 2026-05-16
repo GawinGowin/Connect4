@@ -1,8 +1,10 @@
 #include "connect4.h"
+#include "libft.h"
 
 void board_init(t_board *b, t_args *args) {
-  b->cols = args->cols;
+  ft_memset(b, 0, sizeof(*b));
   b->rows = args->rows;
+  b->cols = args->cols;
 }
 
 int board_drop(t_board *b, int col, t_cell mark) {

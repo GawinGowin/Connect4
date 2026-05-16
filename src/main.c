@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
   t_cell next_player = rand() % 2 ? CELL_P1 : CELL_P2;
   ft_printf("First player: %s\n", next_player == CELL_P1 ? "You (Human)" : "AI");
 
-  t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
+  t_board board;
   board_init(&board, &args);
 
   while (1) {
