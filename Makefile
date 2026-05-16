@@ -21,9 +21,9 @@ SRCS +=
 CC := cc
 INCLUDES := -Iinclude
 CFLAGS := -Wall -Wextra -Werror -MMD -MP $(INCLUDES)
-LFLAGS := -Llib/libft -lft -lncurses
+LFLAGS := -Llib/libft -lft
 DFLAGS := -g3 -fsanitize=address
-DLFLAGS := -Llib/libft -lft_debug -lncurses
+DLFLAGS := -Llib/libft -lft_debug
 
 LIB := lib/libft/libft.a
 DLIB := lib/libft/libft_debug.a
