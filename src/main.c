@@ -26,6 +26,11 @@ int main() {
       ft_printf("Player: %d won!\n", next_palyer);
       break;
     }
+    if (board_is_full(&board)) {
+      draw_board(&board);
+      ft_printf("It's a draw!\n");
+      return (0);
+    }
 
     if (next_palyer == CELL_P1) {
       next_palyer = CELL_P2;
