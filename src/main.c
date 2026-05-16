@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   }
 
   srand(time(NULL));
-  t_cell next_palyer = rand() % 2 ? CELL_P1 : CELL_P2;
+  t_cell next_player = rand() % 2 ? CELL_P1 : CELL_P2;
 
   t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
   board_init(&board, &args);
@@ -21,8 +21,8 @@ int main(int argc, char **argv) {
   while (1) {
     draw_board(&board);
     int col = -1;
-    while (next_palyer == CELL_P1 && col < 0) {
-      ft_printf("Player %d: ", next_palyer);
+    while (next_player == CELL_P1 && col < 0) {
+      ft_printf("Player %d: ", next_player);
       col = input_terminal(&board);
       if (col == -1) {
         ft_printf("\nGame Exited\n");
@@ -31,18 +31,18 @@ int main(int argc, char **argv) {
         continue;
       }
     }
-    if (next_palyer == CELL_P2) {
+    if (next_player == CELL_P2) {
       col = ai_choose_move(&board, CELL_P2);
       if (col < 0) {
         ft_printf("something wrong\n");
         return 1;
       }
-      ft_printf("Player %d: %d\n", next_palyer, col);
+      ft_printf("Player %d: %d\n", next_player, col);
     }
-    int row = board_drop(&board, col, next_palyer);
+    int row = board_drop(&board, col, next_player);
     if (board_check_win(&board, row, col) > 0) {
       draw_board(&board);
-      ft_printf("Player: %d won!\n", next_palyer);
+      ft_printf("Player: %d won!\n", next_player);
       break;
     }
     if (board_is_full(&board)) {
@@ -51,10 +51,10 @@ int main(int argc, char **argv) {
       return (0);
     }
 
-    if (next_palyer == CELL_P1) {
-      next_palyer = CELL_P2;
-    } else if (next_palyer == CELL_P2) {
-      next_palyer = CELL_P1;
+    if (next_player == CELL_P1) {
+      next_player = CELL_P2;
+    } else if (next_player == CELL_P2) {
+      next_player = CELL_P1;
     }
   }
   return (0);
