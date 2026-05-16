@@ -3,13 +3,12 @@
 
 int main() {
   t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
-
   t_cell next_palyer = CELL_P1;
 
   while (1) {
     draw_board(&board);
     int col = -1;
-    while (col < 0) {
+    while (next_palyer == CELL_P1 && col < 0) {
       ft_printf("Player %d: ", next_palyer);
       col = input_terminal(&board);
       if (col == -1) {
@@ -19,10 +18,17 @@ int main() {
         continue;
       }
     }
-
+    if (next_palyer == CELL_P2) {
+      col = ai_choose_move(&board, CELL_P2);
+      if (col < 0) {
+        ft_printf("something wrong\n");
+        return 1;
+      }
+      ft_printf("Player %d: %d\n", next_palyer, col);
+    }
     int row = board_drop(&board, col, next_palyer);
-
-    if (board_check_win(&board, row, col)) {
+    if (board_check_win(&board, row, col) > 0) {
+      draw_board(&board);
       ft_printf("Player: %d won!\n", next_palyer);
       break;
     }
