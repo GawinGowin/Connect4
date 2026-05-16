@@ -1,17 +1,21 @@
 #include "connect4.h"
 #include "libft.h"
 
+#include <stdlib.h>
+#include <time.h>
+
 int main(int argc, char **argv) {
   t_args args = {};
-  t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
-
-  t_cell next_palyer = CELL_P1; // TODO: select randomly
-
   t_parse_err err = parse_args(argc, argv, &args);
   if (err) {
     print_usage(argv[0], err);
     return 1;
   }
+
+  srand(time(NULL));
+  t_cell next_palyer = rand() % 2 ? CELL_P1 : CELL_P2;
+
+  t_board board = {.cols = 7, .rows = 6, .grid = {}, .stack_top = {}, .moves_count = 0};
   board_init(&board, &args);
 
   while (1) {
