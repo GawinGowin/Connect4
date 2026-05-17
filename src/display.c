@@ -10,9 +10,9 @@ void draw_board(t_board *b) {
 
   for (int row = b->rows - 1; row >= 0; row--) {
     for (int col = 0; col < b->cols; col++) {
-      ft_printf("%c", cell_char(b->grid[row][col]));
       for (int i = 1; i < w; i++)
         write(STDOUT_FILENO, " ", 1);
+      ft_printf("%c", cell_char(b->grid[row][col]));
       write(STDOUT_FILENO, " ", 1);
     }
     ft_printf("\n");
