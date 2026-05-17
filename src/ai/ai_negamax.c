@@ -3,8 +3,6 @@
 #include <limits.h>
 #include <time.h>
 
-#define WIN_SCORE 100000000
-
 static int negamax(
     t_board *b,
     int depth,
@@ -26,7 +24,7 @@ int ai_negamax(t_board *b, t_cell player_mark) {
   int timed_out = 0;
 
   for (int depth = 1; depth <= remaining; depth++) {
-    if (time(NULL) - start >= 1)
+    if (time(NULL) - start >= AI_TIMEOUT_S)
       break;
     timed_out = 0;
     int best_score = INT_MIN + 1;
@@ -72,7 +70,7 @@ static int negamax(
     int *timed_out) {
   t_cell opponent_mark = OPPONENT(player_mark);
 
-  if (time(NULL) - start >= 1) {
+  if (time(NULL) - start >= AI_TIMEOUT_S) {
     *timed_out = 1;
     return 0;
   }
