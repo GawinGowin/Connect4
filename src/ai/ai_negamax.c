@@ -4,7 +4,8 @@
 
 #define WIN_SCORE 100000000
 
-static int negamax(t_board *b, int depth, t_cell player_mark, const int *order);
+static int
+negamax(t_board *b, int depth, int alpha, int beta, t_cell player_mark, const int *order);
 
 int ai_negamax(t_board *b, t_cell player_mark) {
   t_cell opponent_mark = OPPONENT(player_mark);
@@ -25,7 +26,7 @@ int ai_negamax(t_board *b, t_cell player_mark) {
       board_undo(b, col);
       return col;
     }
-    int score = -negamax(b, depth - 1, opponent_mark, order);
+    int score = -negamax(b, depth - 1, INT_MIN + 1, INT_MAX, opponent_mark, order);
     board_undo(b, col);
     if (score > best_score) {
       best_score = score;
@@ -35,12 +36,12 @@ int ai_negamax(t_board *b, t_cell player_mark) {
   return best_col;
 }
 
-static int negamax(t_board *b, int depth, t_cell player_mark, const int *order) {
+static int
+negamax(t_board *b, int depth, int alpha, int beta, t_cell player_mark, const int *order) {
   t_cell opponent_mark = OPPONENT(player_mark);
 
   if (board_is_full(b))
     return 0;
-  int best_score = -WIN_SCORE;
   for (int i = 0; i < b->cols; i++) {
     int col = order[i];
     if (b->stack_top[col] >= b->rows)
@@ -53,10 +54,15 @@ static int negamax(t_board *b, int depth, t_cell player_mark, const int *order) 
     else if (depth == 0)
       score = ai_evaluate(b, player_mark);
     else
-      score = -negamax(b, depth - 1, opponent_mark, order);
+      score = -negamax(b, depth - 1, -beta, -alpha, opponent_mark, order);
     board_undo(b, col);
-    if (score > best_score)
-      best_score = score;
+
+    // alpha beta pruning
+    if (score > alpha) {
+      alpha = score;
+    }
+    if (alpha >= beta)
+      break; // beta-cutoff
   }
-  return best_score;
+  return alpha;
 }
