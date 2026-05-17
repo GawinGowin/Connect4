@@ -2,9 +2,9 @@
 
 #include <limits.h>
 
-#define WIN_SCORE 1000000
+#define WIN_SCORE 100000000
 
-static int negamax(t_board *b, int depth, t_cell player_mark);
+static int negamax(t_board *b, int depth, t_cell player_mark, const int *order);
 
 int ai_negamax(t_board *b, t_cell player_mark) {
   t_cell opponent_mark = OPPONENT(player_mark);
@@ -25,7 +25,7 @@ int ai_negamax(t_board *b, t_cell player_mark) {
       board_undo(b, col);
       return col;
     }
-    int score = -negamax(b, depth - 1, opponent_mark);
+    int score = -negamax(b, depth - 1, opponent_mark, order);
     board_undo(b, col);
     if (score > best_score) {
       best_score = score;
@@ -35,13 +35,11 @@ int ai_negamax(t_board *b, t_cell player_mark) {
   return best_col;
 }
 
-static int negamax(t_board *b, int depth, t_cell player_mark) {
+static int negamax(t_board *b, int depth, t_cell player_mark, const int *order) {
   t_cell opponent_mark = OPPONENT(player_mark);
-  int order[MAX_COLS];
 
   if (board_is_full(b))
     return 0;
-  build_order_array(order, b->cols, MAX_COLS);
   int best_score = -WIN_SCORE;
   for (int i = 0; i < b->cols; i++) {
     int col = order[i];
@@ -55,7 +53,7 @@ static int negamax(t_board *b, int depth, t_cell player_mark) {
     else if (depth == 0)
       score = ai_evaluate(b, player_mark);
     else
-      score = -negamax(b, depth - 1, opponent_mark);
+      score = -negamax(b, depth - 1, opponent_mark, order);
     board_undo(b, col);
     if (score > best_score)
       best_score = score;
