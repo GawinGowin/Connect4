@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 
   srand(time(NULL));
   t_cell next_player = rand() % 2 ? CELL_P1 : CELL_P2;
-  ft_printf("First player: %s\n", next_player == CELL_P1 ? "You (Human)" : "AI");
+  ft_printf("First player: %s\n", next_player == CELL_P1 ? "You" : "AI");
 
   t_board board;
   board_init(&board, &args);
