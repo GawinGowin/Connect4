@@ -9,8 +9,10 @@ SRCS += src/display.c
 SRCS += src/win_check.c
 SRCS += src/input.c
 SRCS += src/ai/ai.c
-SRCS += src/ai/ai_greedy.c
 SRCS += src/ai/ai_utils.c
+SRCS += src/ai/ai_greedy.c
+SRCS += src/ai/ai_negamax.c
+SRCS += src/ai/ai_evaluate.c
 SRCS += 
 
 CC := cc

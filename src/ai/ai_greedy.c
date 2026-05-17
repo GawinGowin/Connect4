@@ -1,7 +1,6 @@
 #include "connect4.h"
 
 static int check_instant_win(t_board *b, t_cell player_mark);
-static int build_order_array(int *array, int cols, int max_cols);
 
 int ai_greedy(t_board *b, t_cell player_mark) {
   t_cell opponent_mark = OPPONENT(player_mark);
