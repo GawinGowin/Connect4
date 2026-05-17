@@ -4,6 +4,8 @@
 #define MAX_ROWS 128
 #define MAX_COLS 128
 
+#define OPPONENT(player) (player == CELL_P1) ? CELL_P2 : CELL_P1;
+
 // CELL_P1: Human
 // CELL_P2: AI
 typedef enum e_cell { CELL_EMPTY = 0, CELL_P1 = 1, CELL_P2 = 2 } t_cell;
@@ -46,5 +48,6 @@ void draw_board(t_board *b);
 
 int ai_choose_move(t_board *board, t_cell player_mark);
 int ai_greedy(t_board *b, t_cell player_mark);
+int build_order_array(int *array, int cols, int max_cols);
 
 #endif /* CONNECT4_H */
