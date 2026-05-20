@@ -3,6 +3,12 @@
 
 #define MAX_ROWS 128
 #define MAX_COLS 128
+#define WIN_SCORE 100000000
+#define AI_TIMEOUT_S 1
+
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) > (b) ? (b) : (a))
+#define OPPONENT(player) ((player) == CELL_P1 ? CELL_P2 : CELL_P1)
 
 // CELL_P1: Human
 // CELL_P2: AI
@@ -45,6 +51,9 @@ int input_terminal(t_board *b);
 void draw_board(t_board *b);
 
 int ai_choose_move(t_board *board, t_cell player_mark);
+int ai_evaluate(t_board *b, t_cell player_mark);
 int ai_greedy(t_board *b, t_cell player_mark);
+int ai_negamax(t_board *b, t_cell player_mark);
+int build_order_array(int *array, int cols, int max_cols);
 
 #endif /* CONNECT4_H */
